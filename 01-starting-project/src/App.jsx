@@ -1,3 +1,6 @@
+import {CORE_CONCEPTS} from "./data/data";
+import React from "react";
+
 const reactDescriptions = ['Fundamentals', 'Core', 'Crucial'];
 function genRandomNumber(max) {
     return Math.floor(Math.random() * (max + 1));
@@ -19,12 +22,31 @@ function Header() {
 }
 
 
+function CoreConcept(props) {
+    return (
+        CORE_CONCEPTS.map((concept, index) =>
+        <li key={`${concept.title}-${index}`}>
+            <img src={concept.image} alt={concept.title}/>
+            <h3>{concept.title}</h3>
+            <p>{concept.description}</p>
+        </li>
+        )
+    );
+}
+
 function App() {
     return (
         <div>
             <Header></Header>
             <main>
                 <h2>Time to get started!</h2>
+                <section id="core-concepts">
+                    <h2>Core concepts</h2>
+                    <ul>
+                        <CoreConcept />
+                    </ul>
+                </section>
+                <section></section>
             </main>
         </div>
   );
