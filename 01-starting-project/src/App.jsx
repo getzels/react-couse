@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Header from "./component/header/Header";
 import CoreConcept from "./component/coreConcept/CoreConcept";
 import TabButton from "./component/tabButton/TabButton";
-import {CORE_CONCEPTS, EXAMPLES} from "./data/data-with-examples";
+import {EXAMPLES} from "./data/data-with-examples";
 
 function App() {
     const [selectedTab, setSelectedTab] = useState('components');
@@ -26,10 +26,26 @@ function App() {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
-                        <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-                        <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
-                        <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
+                        <TabButton
+                            selected={selectedTab === 'components'}
+                            onSelect={() => handleSelect('components')}>
+                            Components
+                        </TabButton>
+                        <TabButton
+                            selected={selectedTab === 'jsx'}
+                            onSelect={() => handleSelect('jsx')}>
+                            JSX
+                        </TabButton>
+                        <TabButton
+                            selected={selectedTab === 'props'}
+                            onSelect={() => handleSelect('props')}>
+                            Props
+                        </TabButton>
+                        <TabButton
+                            selected={selectedTab === 'state'}
+                            onSelect={() => handleSelect('state')}>
+                            State
+                        </TabButton>
                     </menu>
                     <div id="tab-content">
                         <h1>{EXAMPLES[selectedTab].title}</h1>
