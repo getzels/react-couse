@@ -1,5 +1,10 @@
 import "./player.css"
 import {useState} from "react";
+
+export class player {
+    static X = "X";
+    static O =  "O";
+}
 export function Player({ initialName, symbol }) {
 
     const [name, setName] = useState(initialName);
