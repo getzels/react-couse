@@ -1,16 +1,12 @@
 import {useState} from "react";
 
-export function GameBoard({handlePlayerTurn, activePlayer}) {
-    const initialGameBoard = Array.from({ length: 3 }, () => Array(3).fill(null));
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export function GameBoard({handlePlayerTurn, gameTurns}) {
+    const gameBoard = Array.from({ length: 3 }, () => Array(3).fill(null));
 
-    const handleGameBoardUpdate = (rowIndex, colIndex) => {
-        setGameBoard(board => {
-            const arrayCopy = [...board.map(innerArray => [...innerArray])];
-            arrayCopy[rowIndex][colIndex] = activePlayer;
-            return arrayCopy;
-        });
-        handlePlayerTurn();
+    for (const turn of gameTurns) {
+        const {square, player} = turn;
+        const {row, column} = square;
+        gameBoard[row][column] = player;
     }
 
     return (
@@ -22,7 +18,7 @@ export function GameBoard({handlePlayerTurn, activePlayer}) {
                             {
                                 row.map((column, colIndex) =>
                                     <li key={column + colIndex}>
-                                        <button onClick={() => handleGameBoardUpdate(rowIndex, colIndex)}>{column}</button> {/*Player symbol*/}
+                                        <button onClick={() => handlePlayerTurn(rowIndex, colIndex)}>{column}</button> {/*Player symbol*/}
                                     </li>)
                             }
                         </ol>
