@@ -1,13 +1,7 @@
 import {useState} from "react";
 
-export function GameBoard({handlePlayerTurn, gameTurns}) {
-    const gameBoard = Array.from({ length: 3 }, () => Array(3).fill(null));
+export function GameBoard({handlePlayerTurn, gameBoard}) {
 
-    for (const turn of gameTurns) {
-        const {square, player} = turn;
-        const {row, column} = square;
-        gameBoard[row][column] = player;
-    }
 
     return (
         <ol id="game-board">
@@ -18,7 +12,9 @@ export function GameBoard({handlePlayerTurn, gameTurns}) {
                             {
                                 row.map((column, colIndex) =>
                                     <li key={column + colIndex}>
-                                        <button onClick={() => handlePlayerTurn(rowIndex, colIndex)}>{column}</button> {/*Player symbol*/}
+                                        <button
+                                            onClick={() => handlePlayerTurn(rowIndex, colIndex)}
+                                        disabled={column}>{column}</button> {/*Player symbol*/}
                                     </li>)
                             }
                         </ol>
