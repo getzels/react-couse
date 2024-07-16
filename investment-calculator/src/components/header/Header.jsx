@@ -1,4 +1,4 @@
-import logImg from "../assets/investment-calculator-logo.png"
+import logImg from "../../assets/investment-calculator-logo.png"
 
 export default function Header() {
     return (
