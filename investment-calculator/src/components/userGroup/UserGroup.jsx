@@ -1,19 +1,6 @@
 import {UserInput} from "../userInput/UserInput.jsx";
-import {useState} from "react";
 
-export function UserGroup() {
-    const [formData , setFormData] = useState({
-        initialInvestment: 1000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10,
-    });
-
-    const options = new Map([
-        ['key1', 'value1'],
-        ['key2', 'value2'],
-        ['key3', 'value3']
-    ]);
+export function UserGroup({formData, setFormData}) {
 
     function handleFormData(fieldIdentifier, newValue) {
         setFormData(currentForm => {
